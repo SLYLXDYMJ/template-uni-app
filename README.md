@@ -1,2 +1,19 @@
-# template-uni-app
-基于 uni-app 的脚手架，二次封装（依赖 uview）
+# my-project
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
