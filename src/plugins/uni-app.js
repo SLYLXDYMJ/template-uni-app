@@ -2,6 +2,11 @@ import _ from 'lodash'
 import qs from 'qs'
 import Vue from 'vue'
 
+/**
+ *  将 uni 挂到 Vue 原型链中
+ *  方便在 template 中调用
+ *    @click="$uni.navigateTo(options)"
+ **/
 Vue.prototype.$uni = uni
 
 /**
