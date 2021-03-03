@@ -73,8 +73,6 @@ setTimeout(() => {
  *  @param { Object } headers - 特殊的请求头部
  *
  *  注意：
- *    若 get 则 params = params
- *    若 data 则 data = params
  *    若为 post 请求，并且需要在动态拼接 url
  *      则在请求方法中依赖 params 自行实现
  **/
