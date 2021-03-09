@@ -76,7 +76,7 @@ export default {
       
       uni.removeStorageSync(KEY_TOKEN)
     },
-  
+    
     /**
      *  重定向到登录页面
      *  用于登出，用户身份验证失败等场景
