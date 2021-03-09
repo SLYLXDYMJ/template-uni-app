@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import qs from 'qs'
+import Qs from 'qs'
 import Vue from 'vue'
 
 /**
@@ -63,7 +63,7 @@ Vue.mixin({
       {
         title: 'title',
         path: page ?
-          `${ page.route }?${ qs.stringify(page.options || {}) }` :
+          `${ page.route }?${ Qs.stringify(page.options || {}) }` :
           null,
         imageUrl: null
       }

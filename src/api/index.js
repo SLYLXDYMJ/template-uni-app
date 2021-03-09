@@ -46,18 +46,19 @@ setTimeout(() => {
     /**
      *  有时（大部分时候...）判断请求是否成功
      *  并不是根据 http 状态码，而根据接口 "响应消息的状态码" 判断
-     *  比如：Http Status Code 200 { code: 501, msg: "服务器错误" }
+     *  比如：
+     *    Http Status Code 200 { statusCode: 501, message: "服务器错误" }
      *
      *  因为 http 状态码是 200，所以走的是成功的逻辑
      *  这时其实我们大多数想要走的是失败逻辑
      *  通常会动态的在成功响应拦截器中判断 "响应消息的状态码"
      *  若不是成功的状态码，则抛出异常
      **/
-    // if (response.data.code !== 200) {
+    // if (response.data.statusCode !== 200) {
     //   // 这里通常给出全局的错误提示框
-    //   uni.showToast({ icon: 'none', title: '接口返回错误：' + response.data.msg })
+    //   uni.showToast({ icon: 'none', title: '接口返回错误：' + response.data.message })
     //
-    //   return Promise.reject('接口返回错误：' + response.data.msg)
+    //   return Promise.reject('接口返回错误：' + response.data.message)
     // }
     
     return Promise.resolve(data)
@@ -76,8 +77,8 @@ setTimeout(() => {
  *    若为 post 请求，并且需要在动态拼接 url
  *      则在请求方法中依赖 params 自行实现
  **/
-export const example = function (params = {}, headers = {}) {
+export const example = async (params = {}, headers = {}) => {
   return request.get('', {
     ...params
-  })
+  }, headers)
 }
