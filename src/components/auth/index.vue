@@ -1,17 +1,15 @@
 <template>
-  <button
-    class="comp-auth"
-    v-if="loggedIn === false"
-    open-type="getPhoneNumber"
-    @getphonenumber="getPhoneNumber">
+  <view class="comp-auth" @click="emitClick">
     <slot/>
-  </button>
-  <button
-    class="comp-auth"
-    v-else
-    @click="emitClick">
-    <slot/>
-  </button>
+
+    <!-- 遮盖层 -->
+    <button
+      class="comp-auth-mask"
+      v-if="loggedIn === false"
+      open-type="getPhoneNumber"
+      @getphonenumber="getPhoneNumber"
+      @click.stop/>
+  </view>
 </template>
 
 <script>
@@ -55,15 +53,17 @@
 
 <style lang="scss" scoped>
   .comp-auth {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: none;
-    background-color: transparent;
-    padding: 0;
-    font-size: inherit;
-    &:after {
-      display: none;
+    position: relative;
+    &-mask {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
     }
   }
 </style>
