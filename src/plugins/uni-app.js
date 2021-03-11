@@ -12,7 +12,7 @@ Vue.prototype.$uni = uni
 /**
  *  优化 uni 部分方法
  **/
-// 默认隐藏 toast 的图标（微信小程序默认是 succes 状态）
+// 默认隐藏 toast 的图标（微信小程序默认是 success 状态）
 uni._showToast = uni.showToast
 uni.showToast = function (options) {
   return uni._showToast({
@@ -24,7 +24,7 @@ uni.showToast = function (options) {
 /**
  *  设置默认分享信息
  *  ! 该功能会使所有页面都变得可以分享
- *  ! 默认分享消息最好指向首页，默认指向当前页面（并且拼上了查询字符串）
+ *  ! 所以建议默认分享指向首页
  *
  *  优先级：
  *    1. 按钮分享消息
@@ -43,9 +43,6 @@ uni.showToast = function (options) {
  **/
 Vue.mixin({
   onShareAppMessage ({ from, target = { dataset: {} }, webViewUrl }) {
-    let pages = getCurrentPages()
-    let page = pages[ pages.length - 1 ]
-    
     return _.defaults(
       // 按钮设置的分享消息，优先级最高
       {
@@ -62,9 +59,7 @@ Vue.mixin({
       // 默认设置的分享消息，优先级最低
       {
         title: 'title',
-        path: page ?
-          `${ page.route }?${ Qs.stringify(page.options || {}) }` :
-          null,
+        path: '/pages/index/index',
         imageUrl: null
       }
     )
