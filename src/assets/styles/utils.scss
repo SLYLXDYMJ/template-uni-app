@@ -1,6 +1,8 @@
 // scss 工具库
 // 组件中无需手动引入
 // 已经在 src/uni.scss 中全局引入了
+
+// 防止 rpx 在编辑器中报错
 @function rpx ($value) {
   @return #{$value}rpx;
 }

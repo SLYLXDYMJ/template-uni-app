@@ -6,13 +6,20 @@ module.exports = {
       resolve (id, basedir, importOptions) {
         if (id.startsWith('~@/')) {
           return path.resolve(process.env.UNI_INPUT_DIR, id.substr(3))
-        } else if (id.startsWith('@/')) {
+        }
+        else if (id.startsWith('@/')) {
           return path.resolve(process.env.UNI_INPUT_DIR, id.substr(2))
-        } else if (id.startsWith('/') && !id.startsWith('//')) {
+        }
+        else if (id.startsWith('/') && !id.startsWith('//')) {
           return path.resolve(process.env.UNI_INPUT_DIR, id.substr(1))
         }
         return id
       }
+    }),
+    require('tailwindcss'),
+    require('postcss-class-rename')({
+      // 兼容小程序，将类名带 .和/ 替换成 _
+      '\\\\.': '_'
     }),
     require('autoprefixer')({
       remove: process.env.UNI_PLATFORM !== 'h5'
